@@ -9,16 +9,14 @@ public class DHTTask {
     private String filetype;
     private TaskDefinition taskToComplete;
     private int senderID;
-    private int taskID;
 
-    public DHTTask(String filename, String filetype, TaskDefinition tasktodo, byte[] file, int senderID, int taskID)
+    public DHTTask(String filename, String filetype, TaskDefinition tasktodo, byte[] file, int senderID)
     {
         this.file = file;
         this.senderID = senderID;
         this.filename = filename;
         this.filetype = filetype;
         taskToComplete = tasktodo;
-        this.taskID = taskID;
     }
 
     public byte[] getFile() {
@@ -41,8 +39,5 @@ public class DHTTask {
         return senderID;
     }
 
-    public int getTaskID() {
-        return taskID;
-    }
 }
 

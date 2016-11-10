@@ -1,14 +1,9 @@
 package DistributedHashTable;
 
-import RESTserver.RestServer;
-import RESTserver.RestServerRMI;
 import RESTserver.iRECIEVESTUFF;
-import com.sun.jmx.remote.internal.RMIExporter;
-import com.sun.xml.internal.ws.api.message.ExceptionHasMessage;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-import javax.xml.crypto.Data;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.Transformer;
@@ -20,7 +15,6 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.nio.charset.StandardCharsets;
-import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -340,16 +334,16 @@ public class ChordNode implements Runnable, iINTERNAL{
             new Thread(() -> {
                 try {
                     switch (task.getTaskToComplete()) {
-                        case TEXTPROCESSING:
+                        case TXTPROC:
                             processText(task);
                             break;
-                        case IMAGEPROCESSING:
+                        case DOCPROC:
                             processImage(task);
                             break;
-                        case UNZIP:
+                        case EXCLADD:
                             unzip(task);
                             break;
-                        case TEXTINVERT:
+                        case AVGIMG:
                             textInvert(task);
                             break;
                     }
@@ -577,7 +571,6 @@ public class ChordNode implements Runnable, iINTERNAL{
                 //create the completed task object with the "name" of the person we're returning it to, and the taskID
                 CompletedTask comptask = new CompletedTask();
                 comptask.setXmlfile(returnfile);
-                comptask.setTaskID(task.getTaskID());
                 comptask.setSenderID(task.getSenderID());
                 comptask.setTitle(task.getFilename());
                 completedTasks.add(comptask);

@@ -37,9 +37,8 @@ import java.io.InputStream;
 import java.io.ByteArrayOutputStream;
 import java.util.zip.ZipOutputStream;
 import java.io.FileOutputStream;
-import java.io.FileImputStream;
+import java.io.FileInputStream;
 
-import org.apache.commons.io.FilenameUtils;
 //everything on /base/files/ will hit this class
 @Path("/files")
 public class Server {
@@ -154,48 +153,7 @@ public class Server {
 	@Produces({ MediaType.APPLICATION_OCTET_STREAM })
 	public Response getZipFile(@PathParam("param") String filename) {
 
-		//by default files are looked for in Tomcat's root directory, so we prepend our subdirectory on there first...
-		filename = PREFIX + filename;
-
-		//read filename into a byte array & send to client
-		File f = new File(filename);
-
-		if (f.exists()) {
-			try {
-				String newfn = FilenameUtils.removeExtension(f);
-				newfn += ".zip";
-				File z = new File(newfn);
-				FileOutputStream fos = new FileOutputStream(z);
-				ZipOutputStream zos = new ZipOutputStream(fos);
-				addToZipFile(f, zos);//add the file
-				zos.close();
-				fos.close();
-			}
-			catch(Exception e)
-			{
-				e.printStackTrace();
-				System.exit(-1);
-			}
-			return Response.status(Response.Status.OK).entity(f).build();
-		}
-		else
-			return Response.status(Response.Status.NOT_FOUND).entity("").build();
-	}
-
-	public static void addToZipFile(File file, ZipOutputStream zos) throws FileNotFoundException, IOException {
-
-		FileInputStream fis = new FileInputStream(file);
-		ZipEntry zipEntry = new ZipEntry(file.getName());
-		zos.putNextEntry(zipEntry);
-
-		byte[] bytes = new byte[1024];
-		int length;
-		while ((length = fis.read(bytes)) >= 0) {
-			zos.write(bytes, 0, length);
-		}
-
-		zos.closeEntry();
-		fis.close();
+		return null;
 	}
 
 }

@@ -1,0 +1,3 @@
+javac -cp lib/jersey-bundle-1.17.1.jar:lib/jersey-multipart-1.17.1.jar:lib/mimepull-1.6.jar src/DistributedHashTable/*.java src/RESTserver/*.java -d out/production/TCS/RESTserver/
+javac -cp lib/jersey-bundle-1.17.1.jar:lib/jersey-multipart-1.17.1.jar:lib/mimepull-1.6.jar src/RESTserver/*.java src/DistributedHashTable/*.java -d out/production/TCS/DistributedHashTable/
+

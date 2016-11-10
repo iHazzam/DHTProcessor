@@ -2,9 +2,9 @@ package RESTserver;
 
 
 import DistributedHashTable.CompletedTask;
-
-import javax.ws.rs.core.MultivaluedHashMap;
-import javax.ws.rs.core.MultivaluedMap;
+//
+//import javax.ws.rs.core.MultivaluedHashMap;
+//import javax.ws.rs.core.MultivaluedMap;
 import java.lang.reflect.Array;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -18,7 +18,7 @@ import java.util.HashMap;
  */
 public class RestServerRMI implements iRECIEVESTUFF, Runnable {
 
-     MultivaluedHashMap<Integer, CompletedTask> mvhm = new MultivaluedHashMap<Integer,CompletedTask>();
+//     MultivaluedHashMap<Integer, CompletedTask> mvhm = new MultivaluedHashMap<Integer,CompletedTask>();
 
 
     public RestServerRMI(){
@@ -40,8 +40,8 @@ public class RestServerRMI implements iRECIEVESTUFF, Runnable {
 
 
     public ArrayList<CompletedTask> getAllUserTasks(int uid){
-        return (ArrayList<CompletedTask>) mvhm.get(uid);
-
+        //return (ArrayList<CompletedTask>) mvhm.get(uid);
+            return null;
     }
     public CompletedTask getTaskByID(int uid, int taskid){
         ArrayList<CompletedTask> temp = getAllUserTasks(uid);
@@ -73,7 +73,7 @@ public class RestServerRMI implements iRECIEVESTUFF, Runnable {
     public void exportTask(CompletedTask task)
     {
         int uid = task.getSenderID();
-        mvhm.add(uid,task);
+//        mvhm.add(uid,task);
     }
 
     @Override

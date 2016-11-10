@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+sudo apt-get install php libapache2-mod-php php-mcrypt php-mysql
+sudo apt install composer
+sudo apt-get install php-xml
+sudo apt-get install php-mbstring 
+composer install
+sudo apt-get install php7.0-sqlite
+php artisan serve

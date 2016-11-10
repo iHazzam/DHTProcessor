@@ -1,0 +1,10 @@
+
+/ChordImplementation/makejava ->THEN
+/RestServer/ -> make
+/WebApplication -> ./instructions.txt
+/RestServer/ -> ./upload
+sudo cp -r myapp /var/lib/tomcat8/webapps/
+
+sudo chown -R tomcat8 /var/lib/tomcat8/webapps/myapp/
+
+http://localhost:8080/manager/html 

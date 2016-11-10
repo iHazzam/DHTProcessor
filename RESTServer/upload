@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+cp -r ../ChordImplementation/out/production/TCS/RESTserver/RESTserver myapp/WEB-INF/classes/
+cp -r ../ChordImplementation/out/production/TCS/DistributedHashTable/DistributedHashTable myapp/WEB-INF/classes/
+if [ -d /var/lib/tomcat8/webapps/myapp ]; then
+sudo rm -r /var/lib/tomcat8/webapps/myapp 
+fi
+sudo cp -r myapp /var/lib/tomcat8/webapps/
+sudo chown -R tomcat8 /var/lib/tomcat8/webapps/myapp/
